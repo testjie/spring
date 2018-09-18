@@ -3,6 +3,8 @@ package top.itblacklist.test;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import top.itblacklist.bean.UserBean;
@@ -11,7 +13,7 @@ import top.itblacklist.bean.UserBean1;
 public class SpringBeanTest {
 
     @Test
-    public void testSpringBean() throws Exception{
+    public void testSpringBeanFactory() throws Exception{
         Resource resource = new ClassPathResource("applicactionContext.xml");
         BeanFactory beanFactory =  new XmlBeanFactory(resource);
 
@@ -23,6 +25,13 @@ public class SpringBeanTest {
         userBean2.hello();
         userBean3.hello();
 
+    }
+
+    @Test
+    public void testSpringActionContext() throws Exception{
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicactionContext.xml");
+        UserBean userBean = (UserBean) applicationContext.getBean("userBean1");
+        userBean.hello();
     }
 
 
