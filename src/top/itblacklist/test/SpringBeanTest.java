@@ -6,6 +6,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import top.itblacklist.bean.UserBean;
+import top.itblacklist.bean.UserBean1;
 
 public class SpringBeanTest {
 
@@ -16,8 +17,12 @@ public class SpringBeanTest {
 
         UserBean userBean1 = (UserBean) beanFactory.getBean("userBean1");
         UserBean userBean2 = beanFactory.getBean("userBean2", UserBean.class);
+        UserBean1 userBean3 = beanFactory.getBean(UserBean1.class);
+
         userBean1.hello();
         userBean2.hello();
+        userBean3.hello();
+
     }
 
 

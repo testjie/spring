@@ -5,6 +5,7 @@
 
     <bean id="userBean1" class="top.itblacklist.bean.UserBean"/>
     <bean id="userBean2" class="top.itblacklist.bean.UserBean"/>
+    <bean id="userBean3" class="top.itblacklist.bean.UserBean1"/>
         <!-- collaborators and configuration for this bean go here -->
 
 </beans>
