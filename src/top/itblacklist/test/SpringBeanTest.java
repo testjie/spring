@@ -14,22 +14,22 @@ public class SpringBeanTest {
 
     @Test
     public void testSpringBeanFactory() throws Exception{
-        Resource resource = new ClassPathResource("applicactionContext.xml");
+        Resource resource = new ClassPathResource("applicationContext.xml");
         BeanFactory beanFactory =  new XmlBeanFactory(resource);
 
         UserBean userBean1 = (UserBean) beanFactory.getBean("userBean1");
-        UserBean userBean2 = beanFactory.getBean("userBean2", UserBean.class);
+//        UserBean userBean2 = beanFactory.getBean("userBean2", UserBean.class);
         UserBean1 userBean3 = beanFactory.getBean(UserBean1.class);
 
         userBean1.hello();
-        userBean2.hello();
+//        userBean2.hello();
         userBean3.hello();
 
     }
 
     @Test
     public void testSpringActionContext() throws Exception{
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicactionContext.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserBean userBean = (UserBean) applicationContext.getBean("userBean1");
         userBean.hello();
     }

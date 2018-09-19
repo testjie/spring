@@ -65,3 +65,45 @@
 
 
 #### Spring自带测试
+
+```
+1.	Spring单独写一套测试，可以在不启动服务的情况下读取相应的配置文件
+2.	使用Spring测试需要导入Junit包，Spring的测试与，Spring的aop包
+3.	注意Spring测试中读取配置文件路径
+
+
+  @RunWith:代表你现在使用哪一个Junit环境来做Spring
+  		当前测试跑在哪一个Spring支持的Junit下面
+ 		SpringJUnit4ClassRunner:代表是Junit4的测试环境
+ 
+ @ContextConfiguration：找到我们的核心配置文件
+ 
+```
+
+#### Spring的bean作用域
+
+```
+    那些层应该是单例:dao层,service层,DataSource,SessionFactory
+    那些层不应该是单例,多例(获取一次就new一次)?struts2：action层
+    domain层,util层不由spring管理,自己管理
+    
+    
+    Bean节点有个属性scope
+    singleton,默认值,单例
+    prototype,多例  
+    <bean id="scopeBean" class="cn.itsource._03_scope.MyScopeBean" scope="prototype"></bean>
+
+```
+
+#### Spring的Bean对象的生命周期
+
+```
+生命周期：构造 （创建）-> 初始化->运行-> 销毁   
+bean创建之后 就直接初始化 ，初始化运行之后，就销毁
+配置多例的情况下，不会执行销毁（手动回收gc()）
+
+
+```
+
+
+#### Spring

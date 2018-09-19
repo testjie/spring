@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userBean1" class="top.itblacklist.bean.UserBean"/>
+    <!--<bean id="userBean2" class="top.itblacklist.bean.UserBean"/>-->
+    <bean id="userBean3" class="top.itblacklist.bean.UserBean1" lazy-init="true"/>
+        <!-- collaborators and configuration for this bean go here -->
+
+
+    <!--配置userDao的bean-->
+    <bean name="userDao" class="top.itblacklist.service.dao.impl.UserDaoImpl"/>
+
+    <!--配置userService-->
+    <bean name="userService" class="top.itblacklist.service.service.impl.UserServiceImpl">
+        <!--xml注入userDao到userDao对象-->
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <!--配置userAction,并注入到userServer-->
+    <bean name="userAction" class="top.itblacklist.service.action.UserAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+
+
+</beans>
