@@ -107,3 +107,38 @@ bean创建之后 就直接初始化 ，初始化运行之后，就销毁
 
 
 #### Spring三层注入
+service层
+
+#### Spring注入dataSource+properties文件
+
+```xml
+<beans>
+    <!--加载外部properties文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--配置DataSource-->
+    <bean name="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!--三层配置-->
+    <!--配置userDao的bean-->
+    <bean name="userDaoImpl" class="top.itblacklist.service.dao.impl.UserDaoImpl">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--配置userService-->
+    <bean name="userService" class="top.itblacklist.service.service.impl.UserServiceImpl">
+        <!--xml注入userDao到userDao对象-->
+        <property name="userDao" ref="userDaoImpl"/>
+    </bean>
+
+    <!--配置userAction,并注入到userServer-->
+    <bean name="userAction" class="top.itblacklist.service.action.UserAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+</beans>
+```
