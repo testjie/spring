@@ -9,6 +9,7 @@
         <!-- collaborators and configuration for this bean go here -->
 
 
+    <!--三层配置-->
     <!--配置userDao的bean-->
     <bean name="userDao" class="top.itblacklist.service.dao.impl.UserDaoImpl"/>
 

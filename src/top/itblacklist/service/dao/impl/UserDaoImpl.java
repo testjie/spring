@@ -6,6 +6,6 @@ public class UserDaoImpl implements IUserDao {
 
     @Override
     public void save() {
-        System.out.printf("我保存了");
+        System.out.println("我保存了");
     }
 }
